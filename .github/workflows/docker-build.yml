@@ -1,0 +1,20 @@
+name: Docker image build and push
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: docker image build
+        run: docker build -t 20191120028/flask-redis:latest .
+
+      - name: list docker image
+        run: docker image ls
